@@ -19,3 +19,13 @@ export const getTrendingMovies = async (timeWindow = "day") => {
   const response = await axios.get(`trending/movie/${timeWindow}`, options);
   return response.data.results;
 };
+
+/**
+ *
+ * @param {movieId} movieId
+ * @returns {*} movie details
+ */
+export const getMovieDetails = async (movieId) => {
+  const response = await axios.get(`movie/${movieId}`, options);
+  return response.data;
+};
