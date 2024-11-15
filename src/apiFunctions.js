@@ -1,9 +1,8 @@
 import axios from "axios";
 const apiBearer = import.meta.env.VITE_API_BEARER;
+axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 
 const options = {
-  method: "GET",
-  url: "https://api.themoviedb.org/3/trending/movie/day",
   params: { language: "en-US" },
   headers: {
     accept: "application/json",
@@ -11,9 +10,12 @@ const options = {
   },
 };
 
-export function apiTest() {
-  axios
-    .request(options)
-    .then((res) => console.log(res.data))
-    .catch((err) => console.error(err));
-}
+/**
+ *
+ * @param {string} timeWindow - day, week.
+ * @returns - films Array
+ */
+export const getTrendingMovies = async (timeWindow = "day") => {
+  const response = await axios.get(`trending/movie/${timeWindow}`, options);
+  return response.data.results;
+};
