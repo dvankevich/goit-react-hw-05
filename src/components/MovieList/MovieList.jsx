@@ -1,15 +1,18 @@
-const MovieList = () => {
+import { Link, useLocation } from "react-router-dom";
+
+const MovieList = ({ moviesList }) => {
+  const location = useLocation();
   return (
-    <div>
-      <h2>MovieList</h2>
-      <ul>
-        <li>Film Name</li>
-        <li>Film Name</li>
-        <li>Film Name</li>
-        <li>Film Name</li>
-        <li>Film Name</li>
-      </ul>
-    </div>
+    <ul>
+      {moviesList &&
+        moviesList.map(({ id, title, vote_average }) => (
+          <li key={id}>
+            <Link to={`/movies/${id}`} state={location}>
+              {title} (rating - {vote_average})
+            </Link>
+          </li>
+        ))}
+    </ul>
   );
 };
 
