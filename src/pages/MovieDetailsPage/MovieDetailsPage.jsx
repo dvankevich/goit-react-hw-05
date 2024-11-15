@@ -6,6 +6,8 @@ const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkHref = location.state ?? "/movies";
+  console.log(location.state);
+
   return (
     <div>
       <BackLink to={backLinkHref}>Go back</BackLink>
