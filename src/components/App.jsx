@@ -7,8 +7,21 @@ import Navigation from "./Navigation/Navigation";
 import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
 import MovieCast from "./MovieCast/MovieCast";
 import MovieReviews from "./MovieReviews/MovieReviews";
+import { useEffect } from "react";
+import { apiTest } from "../apiFunctions";
 
 function App() {
+  useEffect(() => {
+    // Тут виконуємо асинхронну операцію,
+    // наприклад HTTP-запит за інформацією про користувача
+
+    async function fetchTest() {
+      await apiTest();
+    }
+
+    fetchTest();
+  }, []);
+
   return (
     <>
       <Navigation />
