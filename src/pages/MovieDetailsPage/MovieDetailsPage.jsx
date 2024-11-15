@@ -1,10 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
+import { BackLink } from "../../components/BackLink/BackLink";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
+  const location = useLocation();
+  const backLinkHref = location.state ?? "/movies";
   return (
     <div>
+      <BackLink to={backLinkHref}>Go back</BackLink>
       <h2>MovieDetailsPage</h2>
       <div>Now showing Movie details with id - {movieId}</div>
       <ul>
