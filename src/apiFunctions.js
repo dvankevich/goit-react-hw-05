@@ -10,6 +10,19 @@ const options = {
   },
 };
 
+console.log("options", options);
+
+// const searchOptions = {
+//   ...options,
+//   params: {
+//     ...options.params,
+//     query: "query string",
+//     include_adult: "false",
+//     page: "1",
+//   },
+// };
+// console.log("searchOptions", searchOptions);
+
 /**
  *
  * @param {string} timeWindow - day, week.
@@ -42,5 +55,19 @@ export const getMovieCast = async (movieId) => {
 
 export const getMovieReviews = async (movieId) => {
   const response = await axios.get(`movie/${movieId}/reviews`, options);
+  return response.data.results;
+};
+
+export const searchMovies = async (query) => {
+  const searchOptions = {
+    ...options,
+    params: {
+      ...options.params,
+      query: query,
+      include_adult: "false",
+      page: "1",
+    },
+  };
+  const response = await axios.get("search/movie", searchOptions);
   return response.data.results;
 };
