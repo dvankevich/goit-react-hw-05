@@ -29,3 +29,13 @@ export const getMovieDetails = async (movieId) => {
   const response = await axios.get(`movie/${movieId}`, options);
   return response.data;
 };
+
+/**
+ *
+ * @param {*} movieId
+ * @returns movie cast array
+ */
+export const getMovieCast = async (movieId) => {
+  const response = await axios.get(`movie/${movieId}/credits`, options);
+  return response.data.cast;
+};
