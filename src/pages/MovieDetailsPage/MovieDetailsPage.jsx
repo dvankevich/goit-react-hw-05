@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import { BackLink } from "../../components/BackLink/BackLink";
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "../../apiFunctions";
+import { Suspense } from "react";
 
 //https://ui.dev/react-router-pass-props-to-link
 //
@@ -93,7 +94,9 @@ const MovieDetailsPage = () => {
               </Link>
             </li>
           </ul>
-          <Outlet />
+          <Suspense fallback={<div>Loading subpage...</div>}>
+            <Outlet />
+          </Suspense>
         </>
       )}
     </div>
