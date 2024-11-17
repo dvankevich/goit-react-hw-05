@@ -23,9 +23,9 @@ const MovieCast = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  useEffect(() => {
-    console.log("CAST: ", movieCast);
-  }, [movieCast]);
+  // useEffect(() => {
+  //   console.log("CAST: ", movieCast);
+  // }, [movieCast]);
 
   return (
     <>
@@ -53,6 +53,9 @@ const MovieCast = () => {
           </ul>
         )}
       </div>
+      {movieCast !== null && movieCast.length === 0 && (
+        <p>No cast information for this movie</p>
+      )}
     </>
   );
 };

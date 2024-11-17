@@ -23,9 +23,9 @@ const MoviesPage = () => {
     fetchMovies();
   }, [query]);
 
-  useEffect(() => {
-    console.log("search movieList", movieList);
-  }, [movieList]);
+  // useEffect(() => {
+  //   console.log("search movieList", movieList);
+  // }, [movieList]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,13 +36,16 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <h2>MoviesPage</h2>
+      <h2>Movies search</h2>
       <form onSubmit={handleSubmit}>
         <input type="text" name="query" />
         <button type="submit">Search</button>
       </form>
       {error && <p>Error loading movie data.</p>}
       {movieList.length !== 0 && <MovieList moviesList={movieList} />}
+      {movieList !== null && movieList.length === 0 && (
+        <p>No movies found with {query} search request.</p>
+      )}
     </div>
   );
 };

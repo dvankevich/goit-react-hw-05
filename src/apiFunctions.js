@@ -10,7 +10,7 @@ const options = {
   },
 };
 
-console.log("options", options);
+// console.log("options", options);
 
 // const searchOptions = {
 //   ...options,

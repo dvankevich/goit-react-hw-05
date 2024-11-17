@@ -20,9 +20,9 @@ const MovieReviews = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  useEffect(() => {
-    console.log(movieReview);
-  }, [movieReview]);
+  // useEffect(() => {
+  //   console.log(movieReview);
+  // }, [movieReview]);
 
   // movies with no reviews
   // http://localhost:5173/movies/597028 - King
@@ -32,7 +32,7 @@ const MovieReviews = () => {
 
   return (
     <div>
-      <h3>MovieReviews</h3>
+      <h3>Movie reviews</h3>
       {error && <p>Error loading movie reviews</p>}
       {movieReview && (
         <ul>

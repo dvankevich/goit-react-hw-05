@@ -12,13 +12,15 @@ const HomePage = () => {
       try {
         const movies = await getTrendingMovies();
         setTrendingMoviesList(movies);
-        console.log(movies);
+        // console.log(movies);
       } catch (error) {
         setError(error);
       }
     };
     fetchTrendingMovies();
   }, []);
+  // можливо треба перенести цей useEffect в компонент App і передавати значення trendingMoviesList пропсом.
+  // дані не так часто змінюються і достатньо їх отримувати один раз при монтуванні головної сторінки.
 
   return (
     <div>

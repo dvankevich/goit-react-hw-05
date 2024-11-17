@@ -29,21 +29,21 @@ const MovieDetailsPage = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  useEffect(() => {
-    console.log(movieData);
-  }, [movieData]);
+  // useEffect(() => {
+  //   console.log(movieData);
+  // }, [movieData]);
 
-  useEffect(() => {
-    console.log("location state: ", location.state);
-  }, [location]);
+  // useEffect(() => {
+  //   console.log("location state: ", location.state);
+  // }, [location]);
 
   // 2Do Зробити окремі компоненти для відображення деталей фільму, списку акторів і оглядів?
   // 2Do деструктуризувати movieData.
   return (
     <div>
       <BackLink to={backLinkState}>Go back</BackLink>
-      <h2>MovieDetailsPage</h2>
-      <div>Now showing Movie details with id - {movieId}</div>
+      {/* <h2>MovieDetailsPage</h2>
+      <div>Now showing Movie details with id - {movieId}</div> */}
       {error && <p>Error loading movie details.</p>}
       {movieData && (
         <>
@@ -67,6 +67,7 @@ const MovieDetailsPage = () => {
                 </a>
               </li>
             )}
+            <li>Runtime: {movieData.runtime} min.</li>
             <li>Slogan: {movieData.tagline}</li>
           </ul>
           <p></p>
