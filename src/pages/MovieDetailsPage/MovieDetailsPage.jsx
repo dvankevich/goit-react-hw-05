@@ -38,6 +38,7 @@ const MovieDetailsPage = () => {
   }, [location]);
 
   // 2Do Зробити окремі компоненти для відображення деталей фільму, списку акторів і оглядів?
+  // 2Do деструктуризувати movieData.
   return (
     <div>
       <BackLink to={backLinkState}>Go back</BackLink>
@@ -56,7 +57,19 @@ const MovieDetailsPage = () => {
             alt={movieData.title}
           />
           <h2>{movieData.title}</h2>
-          <p>User Score: {movieData.vote_average}</p>
+          <ul>
+            <li>User Score: {movieData.vote_average}</li>
+            <li>Release date: {movieData.release_date}</li>
+            {movieData.homepage && (
+              <li>
+                <a href={movieData.homepage} target="_blank">
+                  {movieData.homepage}
+                </a>
+              </li>
+            )}
+            <li>Slogan: {movieData.tagline}</li>
+          </ul>
+          <p></p>
           <h3>Overview</h3>
           <p>{movieData.overview}</p>
           <h3>Genres</h3>
