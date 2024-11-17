@@ -43,7 +43,7 @@ const MoviesPage = () => {
       </form>
       {error && <p>Error loading movie data.</p>}
       {movieList.length !== 0 && <MovieList moviesList={movieList} />}
-      {movieList !== null && movieList.length === 0 && (
+      {query !== "" && movieList !== null && movieList.length === 0 && (
         <p>No movies found with {query} search request.</p>
       )}
     </div>
