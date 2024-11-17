@@ -41,7 +41,7 @@ const MoviesPage = () => {
         <input type="text" name="query" />
         <button type="submit">Search</button>
       </form>
-      {error && <p>Error</p>}
+      {error && <p>Error loading movie data.</p>}
       {movieList.length !== 0 && <MovieList moviesList={movieList} />}
     </div>
   );

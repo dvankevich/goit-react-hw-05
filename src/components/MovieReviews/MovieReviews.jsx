@@ -28,21 +28,25 @@ const MovieReviews = () => {
   // http://localhost:5173/movies/597028 - King
   // http://localhost:5173/movies/1144911 - Skincare
 
+  //2Do додати санітайзер для {review.content}
+
   return (
     <div>
       <h3>MovieReviews</h3>
-      {error && <p>Error</p>}
+      {error && <p>Error loading movie reviews</p>}
       {movieReview && (
         <ul>
-          <ul>
-            {movieReview.map((review) => (
-              <li key={review.id}>
-                <h4>Author: {review.author}</h4>
-                <p>{review.content}</p>
-                <p>Created at {review.created_at.slice(0, 10)}</p>
-              </li>
-            ))}
-          </ul>
+          {movieReview.map((review) => (
+            <li key={review.id}>
+              <h4>Author: {review.author}</h4>
+
+              <p>{review.content}</p>
+              <p>
+                <em>Created at {review.created_at.slice(0, 10)}</em>
+              </p>
+              <hr />
+            </li>
+          ))}
         </ul>
       )}
 

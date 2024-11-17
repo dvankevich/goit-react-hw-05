@@ -44,7 +44,7 @@ const MovieDetailsPage = () => {
       <BackLink to={backLinkState}>Go back</BackLink>
       <h2>MovieDetailsPage</h2>
       <div>Now showing Movie details with id - {movieId}</div>
-      {error && <p>Error</p>}
+      {error && <p>Error loading movie details.</p>}
       {movieData && (
         <>
           <img
