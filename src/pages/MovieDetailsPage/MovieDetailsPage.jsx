@@ -4,15 +4,17 @@ import { BackLink } from "../../components/BackLink/BackLink";
 import { useEffect, useState } from "react";
 import { getMovieDetails } from "../../apiFunctions";
 
+//https://ui.dev/react-router-pass-props-to-link
+//
+
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state ?? "/movies";
+  const backLinkState = location.state ?? "/movies";
   const [movieData, setMovieData] = useState(null);
   const [error, setError] = useState(false);
   const defaultImg =
     "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster";
-  console.log(location.state);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -31,10 +33,14 @@ const MovieDetailsPage = () => {
     console.log(movieData);
   }, [movieData]);
 
+  useEffect(() => {
+    console.log("location state: ", location.state);
+  }, [location]);
+
   // 2Do Зробити окремі компоненти для відображення деталей фільму, списку акторів і оглядів?
   return (
     <div>
-      <BackLink to={backLinkHref}>Go back</BackLink>
+      <BackLink to={backLinkState}>Go back</BackLink>
       <h2>MovieDetailsPage</h2>
       <div>Now showing Movie details with id - {movieId}</div>
       {error && <p>Error</p>}
@@ -63,10 +69,14 @@ const MovieDetailsPage = () => {
           <h3>Additional information</h3>
           <ul>
             <li>
-              <Link to="cast">Cast</Link>
+              <Link to="cast" state={backLinkState}>
+                Cast
+              </Link>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <Link to="reviews" state={backLinkState}>
+                Reviews
+              </Link>
             </li>
           </ul>
           <Outlet />
